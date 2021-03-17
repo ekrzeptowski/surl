@@ -69,6 +69,7 @@ model VerificationRequest {
 model Short {
   id        Int     @id @default(autoincrement())
   url       String
+  slug      String  @unique
   active    Boolean @default(true)
   creatorId Int?
   creator   User?   @relation(fields: [creatorId], references: [id])
