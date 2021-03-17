@@ -70,6 +70,6 @@ model Short {
   id        Int     @id @default(autoincrement())
   url       String
   active    Boolean @default(true)
-  creatorId Int
-  creator   User    @relation(fields: [creatorId], references: [id])
+  creatorId Int?
+  creator   User?   @relation(fields: [creatorId], references: [id])
 }
