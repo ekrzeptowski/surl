@@ -10,6 +10,7 @@ import { Input } from "@components/Form/Input";
 import { Submit } from "@components/Form/Submit";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@components/Button";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -37,41 +38,58 @@ export default function Home() {
         <div className="flex-auto"></div>
         <div className="flex justify-center items-center flex-col">
           <AnimatePresence>
-            {!slug && <motion.form
-              action="/api/links"
-              method="POST"
-              initial={initial ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex w-full flex-col max-w-screen-sm mb-4"
-              onSubmit={shortenLink}
-            >
-              <label htmlFor="url" className="text-2xl">
-                Url:
-            </label>
-              <div className="flex">
-                <Input
-                  type="url"
-                  name="url"
-                  placeholder="https://example.com"
-                  errors={errors}
-                  ref={register({ required: "Please enter a valid url" })}
-                />
-                <Submit />
-              </div>
-            </motion.form>}
-            {slug && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex w-full flex-col max-w-screen-sm mb-4">
-              <label className="text-2xl">Shortened url:</label>
-              <div className="flex">
-                <Input
-                  type="url"
-                  name="shortened"
-                  readOnly
-                  value={window.location.origin + "/" + slug}
-                />
+            {!slug && (
+              <motion.form
+                action="/api/links"
+                method="POST"
+                initial={initial ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex w-full flex-col max-w-screen-sm mb-4"
+                onSubmit={shortenLink}
+              >
+                <label htmlFor="url" className="text-2xl">
+                  Url:
+                </label>
+                <div className="flex">
+                  <Input
+                    type="url"
+                    name="url"
+                    placeholder="https://example.com"
+                    errors={errors}
+                    ref={register({ required: "Please enter a valid url" })}
+                  />
+                  <Submit />
+                </div>
+              </motion.form>
+            )}
+            {slug && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex w-full flex-col max-w-screen-sm mb-4"
+              >
+                <label className="text-2xl">Shortened url:</label>
+                <div className="flex">
+                  <CopyToClipboard
+                    text={window.location.origin + "/" + slug}
+                    onCopy={() => setCopied(true)}
+                  >
+                    <Input
+                      type="url"
+                      name="shortened"
+                      readOnly
+                      pointer
+                      onFocus={(event) => event.target.select()}
+                      tooltip={copied ? "Link copied" : "Click to copy URL"}
+                      value={window.location.origin + "/" + slug}
+                    />
+                  </CopyToClipboard>
                   <Button onClick={newLink}>New link</Button>
-              </div>
-            </motion.div>}
+                </div>
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
         <div className="flex-auto h-0 max-w-screen-lg mx-auto">
