@@ -9,11 +9,13 @@ import Layout from "@components/Layout";
 import { Input } from "@components/Form/Input";
 import { Submit } from "@components/Form/Submit";
 import { AnimatePresence, motion } from "framer-motion";
+import { Button } from "@components/Button";
 
 export default function Home() {
   const [session, loading] = useSession();
   const { register, handleSubmit, errors, reset } = useForm<FormData>();
   const [initial, setInitial] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   const [slug, setSlug] = useState<string | null>(null);
 
@@ -23,6 +25,12 @@ export default function Home() {
     setSlug(short.slug);
     reset();
   });
+
+  const newLink = () => {
+    setCopied(false);
+    reset();
+    setSlug(null);
+  };
   return (
     <Layout>
       <main className="flex flex-1 flex-col pt-2 dark:bg-gray-800 dark:text-gray-200">
@@ -61,6 +69,7 @@ export default function Home() {
                   readOnly
                   value={window.location.origin + "/" + slug}
                 />
+                  <Button onClick={newLink}>New link</Button>
               </div>
             </motion.div>}
           </AnimatePresence>
