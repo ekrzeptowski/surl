@@ -58,7 +58,8 @@ export default function Home() {
                 <Input
                   type="url"
                   name="shortened"
-                  value={slug}
+                  readOnly
+                  value={window.location.origin + "/" + slug}
                 />
               </div>
             </motion.div>}
