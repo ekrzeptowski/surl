@@ -40,8 +40,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           : undefined,
       },
     });
-
-    res.status(200).json(result);
+    if (req.headers["content-type"] === "application/x-www-form-urlencoded") {
+      res.status(304).redirect(`/nojs?slug=${result.slug}`);
+    } else if (req.headers["content-type"] === "application/json") {
+      res.status(200).json(result);
+    }
   } else {
     res.status(500).send("An error occured");
   }
