@@ -17,7 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
     });
-    res.status(200).json({ links });
+    res.status(200).json(links);
   } else if (req.method === "POST" && req.body.url) {
     let slug = generateSlug();
     // Check for slug collisions
