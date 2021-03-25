@@ -3,10 +3,11 @@ import Navbar from "./Navbar";
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main>{children}</main>
-    </>
+      <>{children}</>
+      <footer className="justify-end">TODO: Footer</footer>
+    </div>
   );
 };
 
