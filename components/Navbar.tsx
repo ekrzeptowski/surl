@@ -6,18 +6,18 @@ import Logo from "./Logo.svg";
 const Navbar = ({}: NavbarProps) => {
   const [session, loading] = useSession();
   return (
-    <nav>
-      <div className="flex items-center border-b border-gray-200">
-        <div>
+    <nav className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center">
+        <div className="w-28">
           <Logo />
         </div>
         <span className="flex-1"></span>
         <div className="flex items-center">
-          {!session && (
+          {!loading && !session && (
             <>
-              <span>You are not signed in</span>
               <a
                 href={`/api/auth/signin`}
+                className="mr-1 font-bold"
                 onClick={(e) => {
                   e.preventDefault();
                   signIn();
