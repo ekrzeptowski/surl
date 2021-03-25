@@ -11,6 +11,7 @@ import { Submit } from "@components/Form/Submit";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@components/Button";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { createUrl } from "../helpers/createUrl";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -73,7 +74,7 @@ export default function Home() {
                 <label className="text-2xl">Shortened url:</label>
                 <div className="flex">
                   <CopyToClipboard
-                    text={window.location.origin + "/" + slug}
+                    text={createUrl(slug)}
                     onCopy={() => setCopied(true)}
                   >
                     <Input
@@ -83,7 +84,7 @@ export default function Home() {
                       pointer
                       onFocus={(event) => event.target.select()}
                       tooltip={copied ? "Link copied" : "Click to copy URL"}
-                      value={window.location.origin + "/" + slug}
+                      value={createUrl(slug)}
                     />
                   </CopyToClipboard>
                   <Button onClick={newLink}>New link</Button>
