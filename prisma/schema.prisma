@@ -68,7 +68,7 @@ model VerificationRequest {
 
 model Short {
   id        Int     @id @default(autoincrement())
-  url       String
+  url       String  @db.VarChar(4096)
   slug      String  @unique
   active    Boolean @default(true)
   creatorId Int?
