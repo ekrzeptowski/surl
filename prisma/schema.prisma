@@ -67,10 +67,12 @@ model VerificationRequest {
 }
 
 model Short {
-  id        Int     @id @default(autoincrement())
-  url       String  @db.VarChar(4096)
-  slug      String  @unique
-  active    Boolean @default(true)
-  creatorId Int?
-  creator   User?   @relation(fields: [creatorId], references: [id])
+  id         Int      @id @default(autoincrement())
+  url        String   @db.VarChar(4096)
+  slug       String   @unique
+  active     Boolean  @default(true)
+  linkClicks Int      @default(0)
+  creatorId  Int?
+  creator    User?    @relation(fields: [creatorId], references: [id])
+  createdAt  DateTime @default(now())
 }
