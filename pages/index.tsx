@@ -15,7 +15,12 @@ import { createUrl } from "../helpers/createUrl";
 
 export default function Home() {
   const [session, loading] = useSession();
-  const { register, handleSubmit, errors, reset } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>();
   const [initial, setInitial] = useState(true);
   const [copied, setCopied] = useState(false);
 
@@ -55,10 +60,11 @@ export default function Home() {
                 <div className="flex">
                   <Input
                     type="url"
-                    name="url"
+                    {...register("url", {
+                      required: "Please enter a valid url",
+                    })}
                     placeholder="https://example.com"
                     errors={errors}
-                    ref={register({ required: "Please enter a valid url" })}
                   />
                   <Submit />
                 </div>
