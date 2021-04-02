@@ -16,6 +16,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           },
         },
       },
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        slug: true,
+        url: true,
+      },
     });
     res.status(200).json(links);
   } else if (req.method === "POST" && req.body.url) {
