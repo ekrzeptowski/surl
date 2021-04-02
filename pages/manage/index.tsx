@@ -11,6 +11,7 @@ import Link from "next/link";
 import { BiCopy } from "@react-icons/all-files/bi/BiCopy";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { createUrl } from "helpers/createUrl";
+import { BackButton } from "@components/BackButton";
 const fetchShorts = (): Promise<Short[]> => ky.get("/api/links").json();
 
 export default function Manage() {
@@ -32,6 +33,7 @@ export default function Manage() {
     <Layout>
       {!loading && (
         <Header>
+          <BackButton href="/">New link</BackButton>
           <HeaderText>Manage</HeaderText>
         </Header>
       )}
@@ -48,7 +50,7 @@ export default function Manage() {
                     </div>
                   </CopyToClipboard>
                   <Link href={`/manage/${cur.slug}`}>
-                    <a className="py-4">{cur.url}</a>
+                    <a className="py-4 flex-1">{cur.url}</a>
                   </Link>
                 </ListItem>
               ))}
