@@ -4,6 +4,7 @@ import { Submit } from "@components/Form/Submit";
 import { GetServerSidePropsContext } from "next";
 import { button } from "@components/Button";
 import Link from "next/link";
+import { createUrl } from "helpers/createUrl";
 
 export default function Home(props: HomeProps) {
   const { slug } = props;
@@ -54,7 +55,7 @@ export default function Home(props: HomeProps) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slug = context.query.slug
-    ? process.env.NEXT_PUBLIC_ORIGIN + "/" + context.query.slug
+    ? createUrl(context.query.slug.toString())
     : null;
   return {
     props: { slug }, // will be passed to the page component as props
