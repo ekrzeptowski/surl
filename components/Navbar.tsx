@@ -36,11 +36,12 @@ const Navbar = ({}: NavbarProps) => {
                   className="w-12 h-12 inline-block rounded-full"
                 />
               )}
-              <span>
+              <span className="hidden sm:inline-block">
                 <strong>{session.user.name || session.user.email}</strong>
               </span>
               <a
                 href={`/api/auth/signout`}
+                className="ml-2 hover:underline"
                 onClick={(e) => {
                   e.preventDefault();
                   signOut();

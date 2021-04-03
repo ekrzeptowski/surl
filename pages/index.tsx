@@ -117,7 +117,9 @@ export default function Home() {
               </>
             )}
             {!loading && session && (
-              <Link href="/manage">Manage shorted urls</Link>
+              <Link href="/manage">
+                <a className="hover:underline">Manage shorted urls</a>
+              </Link>
             )}
           </span>
         </div>

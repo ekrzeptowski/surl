@@ -53,12 +53,12 @@ export default function Manage() {
         <div className="px-0 sm:px-2">
           <div className="mx-auto shadow-lg bg-white dark:bg-gray-900 p-4 rounded-xl w-full max-w-screen-md break-all">
             {!data && isLoading && (
-              <div className="animate-pulse space-y-2">
+              <div className="animate-pulse space-y-3.5">
                 <Skeleton className="h-6 w-full max-w-md" />
                 <Skeleton className="h-6 w-40" />
                 <Skeleton className="h-4 w-56" />
                 <Skeleton className="h-4 w-40" />
-                <Skeleton className="h-4 w-56" />
+                <Skeleton className="h-10 w-36 mt-4 block" />
               </div>
             )}
             {data && (
@@ -69,7 +69,7 @@ export default function Manage() {
                 </h2>
                 <p>Total clicks: {data.linkClicks || 0}</p>
                 <p>Creation date: {format(new Date(data.createdAt), "PPpp")}</p>
-                <div>
+                <div className="mt-4">
                   <Button variant="caution" onClick={openModal}>
                     Remove link
                     <BiTrash size={"1.25em"} />
