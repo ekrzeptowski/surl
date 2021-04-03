@@ -6,6 +6,7 @@ import { Short } from ".prisma/client";
 
 import { createUrl } from "helpers/createUrl";
 
+import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 import ReactModal from "react-modal";
 import { format } from "date-fns";
@@ -42,6 +43,7 @@ export default function Manage() {
   };
   return (
     <Layout>
+      <NextSeo title={data?.slug} />
       <Header>
         <BackButton href="/manage">Manage</BackButton>
         <HeaderText>

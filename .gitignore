@@ -37,3 +37,6 @@ yarn-error.log*
 # prisma
 
 migrations/
+
+public/robots.txt
+public/sitemap.xml

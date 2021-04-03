@@ -12,6 +12,7 @@ import { BiCopy } from "@react-icons/all-files/bi/BiCopy";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { createUrl } from "helpers/createUrl";
 import { BackButton } from "@components/BackButton";
+import { NextSeo } from "next-seo";
 const fetchShorts = (): Promise<Short[]> => ky.get("/api/links").json();
 
 export default function Manage() {
@@ -31,6 +32,7 @@ export default function Manage() {
 
   return (
     <Layout>
+      <NextSeo title="Manage your URLs" />
       {!loading && (
         <Header>
           <BackButton href="/">New link</BackButton>
