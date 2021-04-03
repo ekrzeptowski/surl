@@ -11,17 +11,27 @@ export const getServerSideProps = async (
 ) => {
   const { slug } = context?.params as Params;
 
-  const urlObject = await prisma.short.update({
-    where: {
-      slug,
-    },
-    data: {
-      linkClicks: { increment: 1 },
-    },
-  });
-  console.log(urlObject);
+  const urlObject =
+    slug.length === 8 &&
+    (await prisma.short.update({
+      where: {
+        slug,
+      },
+      data: {
+        linkClicks: { increment: 1 },
+      },
+    }));
 
-  return { redirect: { permanent: false, destination: urlObject?.url || "/" } };
+  if (urlObject) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: urlObject?.url || "/",
+      },
+    };
+  }
+
+  return { props: {} };
 };
 
 interface Params extends ParsedUrlQuery {
