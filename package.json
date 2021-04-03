@@ -11,6 +11,7 @@
   "dependencies": {
     "@prisma/client": "^2.18.0",
     "@react-icons/all-files": "^4.1.0",
+    "@socialgouv/matomo-next": "^1.2.1",
     "date-fns": "^2.19.0",
     "framer-motion": "^4.0.0",
     "ky": "^0.25.1",
