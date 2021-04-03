@@ -10,6 +10,7 @@
   "dependencies": {
     "@prisma/client": "^2.18.0",
     "@react-icons/all-files": "^4.1.0",
+    "date-fns": "^2.19.0",
     "framer-motion": "^4.0.0",
     "ky": "^0.25.1",
     "ky-universal": "^0.8.2",
@@ -21,6 +22,7 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.0.0",
+    "react-modal": "^3.12.1",
     "react-query": "^3.13.0"
   },
   "devDependencies": {
@@ -32,6 +34,7 @@
     "@types/node": "^14.14.34",
     "@types/react": "^17.0.3",
     "@types/react-copy-to-clipboard": "^5.0.0",
+    "@types/react-modal": "^3.12.0",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.8",
     "prisma": "^2.18.0",

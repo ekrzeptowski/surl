@@ -22,4 +22,13 @@ export default async function handler(
     });
     res.status(200).json(links);
   }
+  if (req.method === "DELETE" && session?.user) {
+    const links = await prisma.short.deleteMany({
+      where: {
+        slug: slug,
+        creator: { email: session.user.email },
+      },
+    });
+    res.status(200).json("Link deleted successfully");
+  }
 }
