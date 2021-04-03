@@ -1,4 +1,5 @@
 import React from "react";
+import { Footer } from "./Footer";
 import Navbar from "./Navbar";
 
 const Layout = ({ children }: LayoutProps) => {
@@ -6,7 +7,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <>{children}</>
-      <footer className="justify-end">TODO: Footer</footer>
+      <Footer />
     </div>
   );
 };

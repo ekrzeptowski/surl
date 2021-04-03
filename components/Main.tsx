@@ -5,7 +5,7 @@ export const Main: FC<HTMLAttributes<HTMLElement>> = ({
 }) => {
   return (
     <main
-      className="flex flex-1 flex-col pt-2 bg-gray-100 dark:bg-gray-800 dark:text-gray-200"
+      className="flex flex-1 flex-col p-2 bg-gray-100 dark:bg-gray-800 dark:text-gray-200"
       {...props}
     >
       {children}
