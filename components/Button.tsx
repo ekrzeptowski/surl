@@ -5,7 +5,7 @@ const base =
 
 const variants = {
   normal: `border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-500 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 focus:ring-indigo-500 dark:focus:ring-indigo-500`,
-  primary: `text-gray-200 border-blue-400 bg-blue-500 hover:bg-blue-600`,
+  primary: `text-gray-100 border-blue-400 bg-blue-600 hover:bg-blue-700`,
   caution: `border-gray-300 dark:border-gray-700 bg-red-500 text-gray-50 hover:bg-red-600 focus:ring-red-500`,
 };
 
