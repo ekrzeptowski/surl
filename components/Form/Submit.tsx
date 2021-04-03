@@ -1,5 +1,5 @@
-import { buttonPrimary } from "@components/Button";
+import { Button } from "@components/Button";
 
 export const Submit = () => {
-  return <input type="submit" className={buttonPrimary} value="Shorten" />;
+  return <Button as="input" variant="primary" type="submit" value="Shorten" />;
 };

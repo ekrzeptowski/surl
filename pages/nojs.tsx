@@ -2,7 +2,7 @@ import Layout from "@components/Layout";
 import { Input } from "@components/Form/Input";
 import { Submit } from "@components/Form/Submit";
 import { GetServerSidePropsContext } from "next";
-import { button } from "@components/Button";
+import { Button } from "@components/Button";
 import Link from "next/link";
 import { createUrl } from "helpers/createUrl";
 
@@ -39,7 +39,7 @@ export default function Home(props: HomeProps) {
               <div className="flex">
                 <Input type="url" name="shortened" readOnly value={slug} />
                 <Link href="/nojs">
-                  <a className={`${button} flex items-center`}>New link</a>
+                  <Button as="a">New link</Button>
                 </Link>
               </div>
             </div>
