@@ -1,4 +1,9 @@
-module.exports = {
+const withPlugins = require("next-compose-plugins");
+
+const config = {
+  future: {
+    webpack5: true,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -6,7 +11,7 @@ module.exports = {
         {
           loader: "@svgr/webpack",
           options: {
-            svgo: false
+            svgo: false,
           },
         },
       ],
@@ -15,3 +20,9 @@ module.exports = {
     return config;
   },
 };
+
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withPlugins([[withBundleAnalyzer]], config);
