@@ -28,4 +28,10 @@ export default NextAuth({
     }),
   ],
   adapter: Adapters.Prisma.Adapter({ prisma }),
+  callbacks: {
+    async session(session, userOrToken) {
+      session.user.id = userOrToken.id;
+      return session;
+    },
+  },
 });

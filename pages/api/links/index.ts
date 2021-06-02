@@ -41,7 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         creator: session
           ? {
               connect: {
-                email: session.user.email || undefined,
+                id: session.user.id || undefined,
               },
             }
           : undefined,
