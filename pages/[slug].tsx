@@ -1,6 +1,6 @@
 import prisma from "@lib/prisma";
 import { GetServerSidePropsContext } from "next";
-import { ParsedUrlQuery } from "node:querystring";
+import { ParsedUrlQuery } from "querystring";
 
 const Redirector = () => <></>;
 

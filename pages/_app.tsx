@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { defaultSEO } from "helpers/defaultSEO";
 import { Provider } from "next-auth/client";
 import { DefaultSeo } from "next-seo";
-import { AppProps } from "next/dist/next-server/lib/router/router";
+import { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { init } from "@socialgouv/matomo-next";
