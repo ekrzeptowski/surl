@@ -1,5 +1,5 @@
 import { defaultSEO } from "helpers/defaultSEO";
-import { Provider } from "next-auth/client";
+import { SessionProvider } from "next-auth/react";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -11,13 +11,13 @@ const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
       <DefaultSeo {...defaultSEO} />
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Component {...pageProps} />
       </QueryClientProvider>
-    </Provider>
+    </SessionProvider>
   );
 }
 

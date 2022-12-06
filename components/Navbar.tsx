@@ -1,10 +1,11 @@
-import { signIn, signOut, useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
 
 import Logo from "./Logo.svg";
 
 const Navbar = ({}: NavbarProps) => {
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
   return (
     <nav className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center">

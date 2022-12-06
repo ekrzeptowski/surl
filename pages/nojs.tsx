@@ -38,7 +38,7 @@ export default function Home(props: HomeProps) {
               <label className="text-2xl">Shortened url:</label>
               <div className="flex">
                 <Input type="url" name="shortened" readOnly value={slug} />
-                <Link href="/nojs">
+                <Link href="/nojs" legacyBehavior>
                   <Button as="a">New link</Button>
                 </Link>
               </div>

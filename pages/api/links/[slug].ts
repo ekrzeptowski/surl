@@ -1,12 +1,12 @@
 import prisma from "@lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
-  const slug = req.query.slug.toString();
+  const slug = req.query.slug?.toString();
   const session = await getSession({ req });
 
   if (req.method === "GET" && session?.user) {
@@ -15,10 +15,10 @@ export default async function handler(
         slug: { equals: slug },
         creator: {
           email: {
-            equals: session.user.email,
-          },
-        },
-      },
+            equals: session.user.email
+          }
+        }
+      }
     });
     res.status(200).json(links);
   }
@@ -26,8 +26,8 @@ export default async function handler(
     const links = await prisma.short.deleteMany({
       where: {
         slug: slug,
-        creator: { email: session.user.email },
-      },
+        creator: { email: session.user.email }
+      }
     });
     res.status(200).json("Link deleted successfully");
   }

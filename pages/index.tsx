@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { signIn, useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/react";
 import { Short } from ".prisma/client";
 import ky from "ky-universal";
 
@@ -14,7 +14,8 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import { createUrl } from "../helpers/createUrl";
 
 export default function Home() {
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
   const {
     register,
     handleSubmit,
@@ -117,8 +118,8 @@ export default function Home() {
               </>
             )}
             {!loading && session && (
-              <Link href="/manage">
-                <a className="hover:underline">Manage shorted urls</a>
+              <Link href="/manage" className="hover:underline">
+                Manage shorted urls
               </Link>
             )}
           </span>

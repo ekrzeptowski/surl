@@ -2,7 +2,7 @@ import prisma from "@lib/prisma";
 import { customAlphabet } from "nanoid";
 import nolookalikes from "nanoid-dictionary/nolookalikes";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });

@@ -27,8 +27,8 @@ ReactModal.setAppElement("#__next");
 export default function Manage() {
   const router = useRouter();
   const slug = (router.query.slug as string) || "";
-  const { isLoading, isError, data } = useQuery(["shorts", slug], () =>
-    fetchShort(slug),
+  const { isLoading, data } = useQuery(["shorts", slug], () =>
+    fetchShort(slug)
   );
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -36,7 +36,7 @@ export default function Manage() {
   const closeModal = () => setModalIsOpen(false);
 
   const deleteLink = () => {
-    ky.delete(`/api/links/${slug}`).then((resp) => {
+    ky.delete(`/api/links/${slug}`).then(() => {
       closeModal();
       router.push("/manage");
     });
@@ -94,7 +94,7 @@ export default function Manage() {
               {children}
             </motion.div>
           )}
-          overlayClassName="fixed w-full h-full inset-0 bg-gray-200 bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-60 z-10 flex items-center justify-center"
+          overlayClassName="fixed w-full h-full inset-0 bg-gray-200/50 dark:bg-gray-700/60 z-10 flex items-center justify-center"
           className="bg-gray-50 dark:bg-gray-900 shadow-xl p-4 rounded-xl dark:text-gray-200 focus:outline-none border-gray-200 dark:border-gray-800 border max-w-screen-sm"
         >
           <div className="flex flex-col sm:flex-row">

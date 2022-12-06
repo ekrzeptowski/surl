@@ -1,5 +1,3 @@
-const withPlugins = require("next-compose-plugins");
-
 const config = {
   webpack(config) {
     config.module.rules.push({
@@ -8,18 +6,18 @@ const config = {
         {
           loader: "@svgr/webpack",
           options: {
-            svgo: false,
-          },
-        },
-      ],
+            svgo: false
+          }
+        }
+      ]
     });
 
     return config;
-  },
+  }
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
+  enabled: process.env.ANALYZE === "true"
 });
 
-module.exports = withPlugins([[withBundleAnalyzer]], config);
+module.exports = withBundleAnalyzer(config);

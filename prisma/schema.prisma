@@ -11,59 +11,45 @@ generator client {
 }
 
 model Account {
-  id                 Int       @id @default(autoincrement())
-  compoundId         String    @unique @map(name: "compound_id")
-  userId             Int       @map(name: "user_id")
-  providerType       String    @map(name: "provider_type")
-  providerId         String    @map(name: "provider_id")
-  providerAccountId  String    @map(name: "provider_account_id")
-  refreshToken       String?   @map(name: "refresh_token")
-  accessToken        String?   @map(name: "access_token")
-  accessTokenExpires DateTime? @map(name: "access_token_expires")
-  createdAt          DateTime  @default(now()) @map(name: "created_at")
-  updatedAt          DateTime  @default(now()) @map(name: "updated_at")
-
-
-  @@index([providerAccountId], name: "providerAccountId")
-  @@index([providerId], name: "providerId")
-  @@index([userId], name: "userId")
-  @@map(name: "accounts")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([provider, providerAccountId])
 }
 
 model Session {
-  id           Int      @id @default(autoincrement())
-  userId       Int      @map(name: "user_id")
+  sessionToken String   @unique
+  userId       String
   expires      DateTime
-  sessionToken String   @unique @map(name: "session_token")
-  accessToken  String   @unique @map(name: "access_token")
-  createdAt    DateTime @default(now()) @map(name: "created_at")
-  updatedAt    DateTime @default(now()) @map(name: "updated_at")
-
-  @@map(name: "sessions")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map(name: "email_verified")
+  email         String    @unique
+  emailVerified DateTime?
   image         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+  accounts      Account[]
+  sessions      Session[]
 
   shorts Short[]
-  @@map(name: "users")
 }
 
-model VerificationRequest {
-  id         Int      @id @default(autoincrement())
+model VerificationToken {
   identifier String
   token      String   @unique
   expires    DateTime
-  createdAt  DateTime @default(now()) @map(name: "created_at")
-  updatedAt  DateTime @default(now()) @map(name: "updated_at")
-
-  @@map(name: "verification_requests")
+  @@id([identifier, token])
 }
 
 model Short {
@@ -72,7 +58,7 @@ model Short {
   slug       String   @unique
   active     Boolean  @default(true)
   linkClicks Int      @default(0)
-  creatorId  Int?
+  creatorId  String?
   creator    User?    @relation(fields: [creatorId], references: [id])
   createdAt  DateTime @default(now())
 }
