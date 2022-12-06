@@ -24,8 +24,6 @@ yarn install
 ([https://www.prisma.io/docs/concepts/database-connectors/mysql/#connection-details](https://www.prisma.io/docs/concepts/database-connectors/mysql/#connection-details))
 * NEXTAUTH_URL: URL of the app
 * NEXT_PUBLIC_ORIGIN: URL of the app
-* NEXT_PUBLIC_MATOMO_URL: URL of the Matomo instance (optional)
-* NEXT_PUBLIC_MATOMO_SITE_ID: Matomo site id (optional)
 
 ### 4. Configure authentication providers according to: 
 [https://next-auth.js.org/configuration/providers](https://next-auth.js.org/configuration/providers)
