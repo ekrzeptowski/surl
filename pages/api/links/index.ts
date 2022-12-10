@@ -7,22 +7,22 @@ import { getSession } from "next-auth/react";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
 
-  if (req.method === "GET" && session?.user) {
+  if (req.method === "GET" && session?.user?.email) {
     const links = await prisma.short.findMany({
       where: {
         creator: {
           email: {
-            equals: session.user.email,
-          },
-        },
+            equals: session.user.email
+          }
+        }
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: "desc"
       },
       select: {
         slug: true,
-        url: true,
-      },
+        url: true
+      }
     });
     res.status(200).json(links);
   } else if (req.method === "POST" && req.body.url) {
@@ -41,11 +41,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         creator: session
           ? {
               connect: {
-                id: session.user.id || undefined,
-              },
+                id: session?.user?.id || undefined
+              }
             }
-          : undefined,
-      },
+          : undefined
+      }
     });
     if (req.headers["content-type"] === "application/x-www-form-urlencoded") {
       res.status(304).redirect(`/nojs?slug=${result.slug}`);
@@ -64,7 +64,7 @@ function generateSlug() {
 async function checkCollision(slug: string) {
   return await prisma.short.findUnique({
     where: {
-      slug: slug,
-    },
+      slug: slug
+    }
   });
 }

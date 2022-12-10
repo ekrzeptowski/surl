@@ -9,7 +9,7 @@ export default async function handler(
   const slug = req.query.slug?.toString();
   const session = await getSession({ req });
 
-  if (req.method === "GET" && session?.user) {
+  if (req.method === "GET" && session?.user?.email) {
     const links = await prisma.short.findFirst({
       where: {
         slug: { equals: slug },
@@ -22,7 +22,7 @@ export default async function handler(
     });
     res.status(200).json(links);
   }
-  if (req.method === "DELETE" && session?.user) {
+  if (req.method === "DELETE" && session?.user?.email) {
     const links = await prisma.short.deleteMany({
       where: {
         slug: slug,

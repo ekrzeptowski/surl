@@ -30,7 +30,7 @@ const Navbar = ({}: NavbarProps) => {
           )}
           {session && (
             <>
-              {session.user.image && (
+              {session.user?.image && (
                 <img
                   src={session.user.image}
                   alt="User profile image"
@@ -38,7 +38,7 @@ const Navbar = ({}: NavbarProps) => {
                 />
               )}
               <span className="hidden sm:inline-block">
-                <strong>{session.user.name || session.user.email}</strong>
+                <strong>{session.user?.name || session.user?.email}</strong>
               </span>
               <a
                 href={`/api/auth/signout`}
