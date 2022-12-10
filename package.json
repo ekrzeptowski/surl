@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "prisma generate",
     "postbuild": "next-sitemap",
     "start": "next start -p 54809"
   },
