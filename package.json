@@ -7,6 +7,7 @@
     "build": "next build",
     "postinstall": "prisma generate",
     "postbuild": "next-sitemap",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start -p 54809"
   },
   "dependencies": {
