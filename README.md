@@ -1,18 +1,18 @@
-# ShortURL
-ShortURL is a modern link shortener based on Next.js
+# Teeny
+Teeny is a modern link shortener based on Next.js
 
-Demo: [http://l.jkrzeptowski.pl/](http://l.jkrzeptowski.pl/)
+Demo: [https://teeny.lol/](https://teeny.lol/)
 
 ## Getting Started
 
 ### 1. Download the code of this repository by cloning it:
 ```bash
-git clone https://github.com/saj96n/surl.git
+git clone https://github.com/ekrzeptowski/teeny.git
 ```
 
 ### 2. Then navigate to directory of the cloned repository and install required dependencies:
 ```bash
-cd surl
+cd teeny
 
 npm install
 # or
@@ -20,8 +20,8 @@ yarn install
 ```
 
 ### 3. Configure environmental variables:
-* DATABASE_URL: MySQL database connection URL
-([https://www.prisma.io/docs/concepts/database-connectors/mysql/#connection-details](https://www.prisma.io/docs/concepts/database-connectors/mysql/#connection-details))
+* DATABASE_URL: Postgres database connection URL
+([https://www.prisma.io/docs/concepts/database-connectors/postgresql](https://www.prisma.io/docs/concepts/database-connectors/postgresql))
 * NEXTAUTH_URL: URL of the app
 * NEXT_PUBLIC_ORIGIN: URL of the app
 

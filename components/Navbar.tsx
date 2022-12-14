@@ -9,7 +9,7 @@ const Navbar = ({}: NavbarProps) => {
   return (
     <nav className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center">
-        <div className="w-28">
+        <div className="w-16 ">
           <Logo />
         </div>
         <span className="flex-1"></span>

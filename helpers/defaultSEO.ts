@@ -1,17 +1,17 @@
 import { NextSeoProps } from "next-seo";
 
 const defaultSEO: NextSeoProps = {
-  titleTemplate: "%s | ShortURL",
-  defaultTitle: "ShortURL",
+  titleTemplate: "%s | Teeny",
+  defaultTitle: "Teeny",
   description: "An app made to shorten long links",
   canonical: `${process.env.NEXT_PUBLIC_ORIGIN}/`,
 
   openGraph: {
     url: `${process.env.NEXT_PUBLIC_ORIGIN}/`,
-    title: "ShortURL",
+    title: "Teeny",
     description: "An app made to shorten long links",
-    type: "website",
-  },
+    type: "website"
+  }
 };
 
 export { defaultSEO };
