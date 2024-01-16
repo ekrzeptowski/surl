@@ -1,7 +1,7 @@
 # Teeny
 Teeny is a modern link shortener based on Next.js
 
-Demo: [https://teeny.lol/](https://teeny.lol/)
+Demo: [https://teeny.ovh/](https://teeny.ovh/)
 
 ## Getting Started
 
