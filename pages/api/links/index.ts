@@ -2,10 +2,11 @@ import prisma from "@lib/prisma";
 import { customAlphabet } from "nanoid";
 import nolookalikes from "nanoid-dictionary/nolookalikes";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
 
   if (req.method === "GET" && session?.user?.email) {
     const links = await prisma.short.findMany({
@@ -62,7 +63,7 @@ function generateSlug() {
 }
 
 async function checkCollision(slug: string) {
-  return await prisma.short.findUnique({
+  return prisma.short.findUnique({
     where: {
       slug: slug
     }
