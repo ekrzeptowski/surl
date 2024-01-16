@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { forwardRef, HTMLProps } from "react";
-import { FieldError } from "react-hook-form";
+import { FieldErrors } from "react-hook-form";
+import type { FormData } from "../../pages";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ errors, name, placeholder, tooltip, pointer, ...props }, ref) => {
-    const error = errors && errors[name];
+    const error = errors && errors[name as keyof FormData];
     const input = (
       <input
         {...props}
@@ -43,10 +44,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ) : (
       input
     );
-  },
+  }
 );
 type InputProps = HTMLProps<HTMLInputElement> & {
-  errors?: { [key: string]: FieldError };
+  errors?: FieldErrors<FormData>;
   name: string;
   tooltip?: string;
   pointer?: boolean;

@@ -20,7 +20,7 @@ export default function Home() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm<FormData>();
   const [initial, setInitial] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -62,7 +62,7 @@ export default function Home() {
                   <Input
                     type="url"
                     {...register("url", {
-                      required: "Please enter a valid url",
+                      required: "Please enter a valid url"
                     })}
                     placeholder="https://example.com"
                     errors={errors}
@@ -129,6 +129,6 @@ export default function Home() {
   );
 }
 
-type FormData = {
+export type FormData = {
   url: string;
 };
